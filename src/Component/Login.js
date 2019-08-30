@@ -11,8 +11,16 @@ class Login extends Component
           username : '',
           password : '',
           showError : '',
+          isLoggedIn: false
       }
     }
+    // componentDidMount() {
+    //     let userData = sessionStorage.getItem('UserData')
+    //     if (userData) {
+    //         localStorage.setItem('loggedIn', true);
+    //         localStorage.setItem('location', "search");
+    //     }
+    //   }
     handleUserNameChange = (event) =>
     {
      this.setState(
@@ -39,6 +47,7 @@ class Login extends Component
         {
             localStorage.setItem('loggedIn', true);
             localStorage.setItem('userName', this.state.username);
+            localStorage.setItem('location', "search");
             this.props.history.push('/Search')
         }
         }).catch(error => {
@@ -54,6 +63,8 @@ class Login extends Component
           else {
             localStorage.removeItem('loggedIn');
           }
+
+          
         return(
             <div className="login-page">
                 <div className="form">

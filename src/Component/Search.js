@@ -11,6 +11,7 @@ import { withRouter } from 'react-router-dom'
           planetName : '',
           planetdata : [],
       }
+      this.handleLogout = this.handleLogout.bind(this);
     }
     handleplanetChange = (event) => {
         event.preventDefault();
@@ -69,8 +70,15 @@ import { withRouter } from 'react-router-dom'
         }
         return classcolor;
     }
+    handleLogout() {
+        localStorage.removeItem('loggedIn');
+        localStorage.setItem('location', "/");
+        this.props.history.push("/");
+    }
     render()
     {
+        if (localStorage.getItem('loggedIn') == "false" || localStorage.getItem('loggedIn') == null)
+        this.props.history.push("/");
         let population = this.state.planetdata.map((test) => test.population);
         let barColor = this.renderClass(population);
         return(
@@ -92,6 +100,9 @@ import { withRouter } from 'react-router-dom'
                    </h5>
                  </div>
             </center>
+            <div className="col-md-6">
+                <button className="btn btn-primary" onClick = {this.handleLogout}>Logout</button>
+                </div>
             </div>
 
         )

@@ -169,3 +169,26 @@ body {
 .danger {width: 500px;
   background-color: red;
 }
+table {
+  width:50%;
+  background-color: white;
+  margin-top: 7%;
+}
+table, th, td {
+  border: 2px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 15px;
+  text-align: left;
+}
+table tr:nth-child(even) {
+  background-color: gainsboro ;
+}
+table tr:nth-child(odd) {
+ background-color: white;
+}
+table th {
+  background-color: black;
+  color: white;
+}
